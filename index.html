@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Image Generator</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header>
+        <h1>Image Generator</h1>
+    </header>
+
+    <main>
+    <picture>
+        <source srcset="images/bg_img.avif" type="image/avif">
+        <img src="images/bg_img.webp" alt="background image" loading="lazy" fetchpriority="high">
+    </picture>
+
+        <input type="text" id="text" placeholder="A random image..." aria-autocomplete="none" autocomplete="off">
+        <button type="submit" id="generate-btn" aria-label="Generate Image">Generate Image</button>
+    </main>
+
+    <script type="module" src="script.js"></script>
+
+    <footer>
+        <a href="https://www.flaticon.com/free-icons/create" title="create icons">Create icons created by LAFS - Flaticon</a>
+    </footer>
+</body>
+</html>
