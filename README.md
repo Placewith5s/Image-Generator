@@ -1,7 +1,7 @@
 # Image-Generator
 
-Warning ⚠️
-This project is by no means secure, since it's only on the frontend!
+## Warning ⚠️
+This project is by no means secure, since it's only on the frontend! (excluding the CDN used)
 
 ## Requirements:
-OpenAI Platform Secret API key
+Secret API key (OpenAI Platform)
