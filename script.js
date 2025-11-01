@@ -1,7 +1,7 @@
 // get the openai
 import OpenAI from 'https://cdn.skypack.dev/openai';
 const openai = new OpenAI({
-    apiKey: '',
+    apiKey: '', // secret key goes here
     dangerouslyAllowBrowser: true
 });
 
@@ -20,7 +20,13 @@ document.addEventListener('DOMContentLoaded', () => {
             return;
         }
 
+        // create the loading text
+        const loading_text = document.createElement('p');
+        loading_text.textContent = "Loading image...";
+        main.appendChild(loading_text);
+
         try {
+            // generate the image
             const response = await openai.images.generate({
                 model: "gpt-image-1",
                 prompt: `${result}`,
@@ -29,11 +35,14 @@ document.addEventListener('DOMContentLoaded', () => {
 
             // create the image
             const img = document.createElement('img');
-            img.src = response.data[0].url;
+            img.src = `data:image/png;base64,${response.data[0].b64_json}`; // fixes header too large error
             img.alt = "Generated Image";
             img.loading = 'lazy';
             img.fetchPriority = 'high';
             main.appendChild(img);
+
+            // image loaded, remove the loading text
+            main.removeChild(loading_text);
 
         } catch (err) {
             throw new Error(`Image fetch error: ${err}`);
